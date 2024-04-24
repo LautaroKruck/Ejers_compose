@@ -14,13 +14,17 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 
 @Composable
-fun ejer4() {
+fun ejer6() {
     Box(modifier = Modifier.fillMaxSize()) {
-        Row(
-            horizontalArrangement = Arrangement.SpaceAround,
-            verticalAlignment = Alignment.Bottom,
-            modifier = Modifier.fillMaxSize()
+        Column(
+            modifier = Modifier.fillMaxSize().align(Alignment.TopCenter)
         ) {
+            Box(
+                modifier = Modifier
+                    .height(300.dp)
+                    .border(2.dp, Color.Red)
+                    .padding(5.dp)
+            ){
             Text(
                 text = "Ejemplo 1",
                 fontWeight = FontWeight.SemiBold,
@@ -28,7 +32,7 @@ fun ejer4() {
                     .height(300.dp)
                     .border(2.dp, Color.Red)
                     .padding(5.dp)
-            )
+            )}
             Text(
                 text = "Ejemplo 1",
                 fontWeight = FontWeight.SemiBold,
@@ -53,6 +57,12 @@ fun ejer4() {
                     .border(2.dp, Color.Blue)
                     .padding(5.dp)
             )
+            Box(
+                modifier = Modifier
+                    .height(300.dp)
+                    .fillMaxSize()
+                    .background(Color.Magenta)
+            )
         }
     }
 }
@@ -65,7 +75,7 @@ fun main() = application {
         title = "Ejemplos Compose",
         state = windowState
     ) {
-        ejer4()
+        ejer6()
 
     }
 }
