@@ -29,7 +29,6 @@ import java.net.URL
 fun main() = singleWindowApplication {
     TutorialImg1()
     TutorialImg2()
-
 }
 
 @Composable
@@ -42,28 +41,28 @@ fun TutorialImg1() {
 }
 
 @Composable
-fun TutorialImg2() = singleWindowApplication {
+fun TutorialImg2() {
     val density = LocalDensity.current
     Column {
         AsyncImage(
             load = { loadImageBitmap("sample.png") },
             painterFor = { remember { BitmapPainter(it) } },
             contentDescription = "Sample",
-            modifier = Modifier.width(200.dp)
+            modifier = Modifier.width(100.dp)
         )
         AsyncImage(
-            load = { loadSvgPainter("C:\\Users\\usuariot\\ReposGit\\ejemplo_compose\\src\\main\\resources", density) },
+            load = { loadSvgPainter("\\ejemplo_compose\\src\\main\\resources", density) },
             painterFor = { it },
             contentDescription = "Idea logo",
             contentScale = ContentScale.FillWidth,
-            modifier = Modifier.width(200.dp)
+            modifier = Modifier.width(100.dp)
         )
         AsyncImage(
-            load = { loadXmlImageVector("C:\\Users\\usuariot\\ReposGit\\ejemplo_compose\\src\\main\\resources", density) },
+            load = { loadXmlImageVector("\\ejemplo_compose\\src\\main\\resources", density) },
             painterFor = { rememberVectorPainter(it) },
             contentDescription = "Compose logo",
             contentScale = ContentScale.FillWidth,
-            modifier = Modifier.width(200.dp)
+            modifier = Modifier.width(100.dp)
         )
     }
 }
