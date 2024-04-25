@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 @Composable
 @Preview
 fun LoginScreen() {
-
     var user by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     val buttonEnabled = user.isNotBlank() && password.isNotBlank()
@@ -26,41 +25,61 @@ fun LoginScreen() {
             modifier = Modifier.fillMaxSize()
         ) {
 
-            OutlinedTextField(
-                value = user,
-                onValueChange = { user = it },
-                label = { Text("Usuario") }
-            )
+            Usuario(user)   { user = it }
 
-            var passVisible by remember { mutableStateOf(false) }
+            Password(password) { password = it }
 
-            OutlinedTextField(
-                value = password,
-                onValueChange = { password = it },
-                label = { Text("Contraseña") },
-                visualTransformation = if (passVisible) VisualTransformation.None else PasswordVisualTransformation(),
-                trailingIcon = {
-                    IconToggleButton(
-                        checked = passVisible,
-                        onCheckedChange = { passVisible = it }
-                    ) {
-                        Icon(
-                            imageVector = if (passVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                            contentDescription = null
-                        )
-                    }
-                }
-            )
+            Button(buttonEnabled) {user = ""; password = ""}
 
-            Button(
-                onClick = {
-                    user = ""
-                    password = ""
-                },
-                enabled = buttonEnabled
+        }
+    }
+}
+
+@Composable
+fun Usuario(user : String,
+            onUserChanged: (String) -> Unit) {
+    OutlinedTextField(
+        value = user,
+        onValueChange = onUserChanged,
+        label = { Text("Usuario") }
+    )
+}
+
+@Composable
+fun Password(
+    password : String,
+    onPasswdChanged: (String) -> Unit)
+{
+    var passVisible by remember { mutableStateOf(false) }
+
+    OutlinedTextField(
+        value = password,
+        onValueChange = onPasswdChanged,
+        label = { Text("Contraseña") },
+        visualTransformation = if (passVisible) VisualTransformation.None else PasswordVisualTransformation(),
+        trailingIcon = {
+            IconToggleButton(
+                checked = passVisible,
+                onCheckedChange = { passVisible = it }
             ) {
-                Text(text = "Login")
+                Icon(
+                    imageVector = if (passVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
+                    contentDescription = null
+                )
             }
         }
+    )
+}
+
+@Composable
+fun Button(
+    buttonEnabled : Boolean,
+    onLoginButtonClick: () -> Unit
+    ) {
+    Button(
+        onClick = onLoginButtonClick,
+        enabled = buttonEnabled
+    ) {
+        Text(text = "Login")
     }
 }

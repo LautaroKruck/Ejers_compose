@@ -3,8 +3,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -58,57 +56,56 @@ fun main() = application {
 }
 
 
-//fun main() = application {
-//    Window(
-//        onCloseRequest = ::exitApplication,
-//        title = "Compose for Desktop",
-//        state = rememberWindowState(width = 300.dp, height = 300.dp)
-//    ) {
-//        var usuario by remember { mutableStateOf("") }
-//        var contrasena by remember { mutableStateOf("") }
-//        var button = usuario.isNotBlank() && contrasena.isNotBlank()
+//@Composable
+//@Preview
+//fun LoginScreen() {
 //
-//        MaterialTheme {
-//                Column(
-//                    horizontalAlignment = Alignment.CenterHorizontally,
-//                    verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.CenterVertically),
-//                    modifier = Modifier.fillMaxSize()
-//                ) {
+//    var user by remember { mutableStateOf("") }
+//    var password by remember { mutableStateOf("") }
+//    val buttonEnabled = user.isNotBlank() && password.isNotBlank()
 //
-//                    OutlinedTextField(
-//                        value = usuario,
-//                        onValueChange = { usuario = it },
-//                        label = { Text("Usuario") }
-//                    )
+//    MaterialTheme {
+//        Column(
+//            horizontalAlignment = Alignment.CenterHorizontally,
+//            verticalArrangement = Arrangement.spacedBy(10.dp, alignment = Alignment.CenterVertically),
+//            modifier = Modifier.fillMaxSize()
+//        ) {
 //
-//                    var passVisible by remember { mutableStateOf(false) }
+//            OutlinedTextField(
+//                value = user,
+//                onValueChange = { user = it },
+//                label = { Text("Usuario") }
+//            )
 //
-//                    OutlinedTextField(
-//                        value = contrasena,
-//                        onValueChange = { contrasena = it },
-//                        label = { Text("Contraseña") },
-//                        visualTransformation = if (passVisible) VisualTransformation.None else PasswordVisualTransformation()
-//                        trailingIcon = {
-//                            IconToggleButton(
-//                                    checked = passVisible
-//                                    onCheckedChange = {passVisible = it}
-//                            ) {
-//                              Icon(
-//                                  ImageVector = if (passVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility
-//                              )
-//                            }
-//                    )
-//                    Button(
-//                        onClick = {
-//                            usuario = ""
-//                            contrasena = ""
-//                        }
+//            var passVisible by remember { mutableStateOf(false) }
+//
+//            OutlinedTextField(
+//                value = password,
+//                onValueChange = { password = it },
+//                label = { Text("Contraseña") },
+//                visualTransformation = if (passVisible) VisualTransformation.None else PasswordVisualTransformation(),
+//                trailingIcon = {
+//                    IconToggleButton(
+//                        checked = passVisible,
+//                        onCheckedChange = { passVisible = it }
 //                    ) {
-//                        Text("Login")
+//                        Icon(
+//                            imageVector = if (passVisible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
+//                            contentDescription = null
+//                        )
 //                    }
 //                }
+//            )
+//
+//            Button(
+//                onClick = {
+//                    user = ""
+//                    password = ""
+//                },
+//                enabled = buttonEnabled
+//            ) {
+//                Text(text = "Login")
 //            }
 //        }
 //    }
 //}
-
